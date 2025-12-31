@@ -1,0 +1,221 @@
+:root {
+    --Purple-50: hsl(260, 100%, 95%);
+    --Purple-300: hsl(264, 82%, 80%);
+    --Purple-500: hsl(263, 55%, 52%);
+    --White: hsl(0, 0%, 100%);
+    --Grey-100: hsl(214, 17%, 92%);
+    --Grey-200: hsl(0, 0%, 81%);
+    --Grey-400: hsl(224, 10%, 45%);
+    --Grey-500: hsl(217, 19%, 35%);
+    --Dark-blue: hsl(219, 29%, 14%);
+    --Black: hsl(0, 0%, 7%);
+    --subject-font-size: clamp(0.813rem, 2vw, 1rem);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Barlow Semi Condensed', 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--Grey-100);
+    color: var(--Black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.testimonial-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.testimonial {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 0.5rem;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.image {
+    border-radius: 50%;
+}
+
+.subject {
+    font-weight: 600;
+    line-height: 1rem;
+    font-size: var(--subject-font-size);
+}
+
+.line-height {
+    line-height: 1.5;
+}
+
+.small-font-size {
+    font-size: clamp(0.5rem, 1vw, 0.813rem);
+}
+
+/********testimonial 1******************/
+
+.testimonial-1 {
+    background-color: var(--Purple-500);
+    color: var(--White);
+    grid-column: 1/3;
+}
+
+.testimonial-1 .image {
+    border: 3px solid var(--Purple-300);
+}
+
+.testimonial-1 .subject {
+    color: var(--White);
+}
+
+.testimonial-1 .degree, .testimonial-1 .msg {
+    color: var(--Purple-50);
+}
+
+
+
+/***************testimonial 2 ***********************/
+
+.testimonial-2 {
+    background-color: var(--Grey-500);
+    color: var(--White);
+}
+
+.testimonial-2 .image {
+    border: 3px solid var(--Grey-200);
+}
+
+.testimonial-2 .degree, .testimonial-2 .msg {
+    color: var(--Purple-50);
+}
+
+/************testimonial 3 *****************************/
+
+.testimonial-3 {
+    background-color: var(--White);
+    grid-column: 4/5;
+    grid-row: 1/3;
+    box-shadow: 5px 5px 25px var(--Grey-500);
+}
+
+.testimonial-3 .subject {
+    color: var(--Grey-500);
+}
+
+.testimonial-3 .image {
+    border: 3px solid var(--Grey-100);
+}
+
+.testimonial-3 .degree, .testimonial-3 .msg {
+    color: var(--Grey-400);
+}
+
+/************testimonial 4 *****************************/
+
+.testimonial-4 {
+    background-color: var(--White);
+    box-shadow: 5px 5px 100px var(--Grey-500);
+}
+
+.testimonial-4 .subject {
+    color: var(--Grey-500);
+}
+
+.testimonial-4 .image {
+    border: 3px solid var(--Grey-100);
+}
+
+.testimonial-4 .degree, .testimonial-4 .msg {
+    color: var(--Grey-400);
+}
+
+/************testimonial 5 *****************************/
+
+.testimonial-5 {
+    background-color: var(--Dark-blue);
+    grid-column: 2/4;
+    box-shadow: 5px 5px 100px var(--Grey-500);
+}
+
+.testimonial-5 .name {
+    color: var(--White);
+}
+
+.testimonial-5 .subject {
+    color: var(--White);
+}
+
+.testimonial-5 .image {
+    border: 3px solid var(--Purple-500);
+}
+
+.testimonial-5 .degree, .testimonial-5 .msg {
+    color: var(--Grey-100);
+}
+
+@media (min-width:376px) {
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1200px;
+    }
+
+}
+
+/* @media (max-width:375px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+} */
+
+
+
+/* Mobile overrides: ensure grid items don't create implicit columns */
+@media (max-width:375px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reset explicit grid placement using a more specific selector so
+       per-item placements (e.g. .testimonial-1) are overridden */
+    .grid-container>.testimonial, .grid-container>.testimonial-container {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    /* Avoid vertical centering on narrow screens which can push content off-screen */
+    body {
+        align-items: flex-start;
+        height: auto;
+        padding-top: 20px;
+    }
+
+    /* Push testimonial-3 to the end on mobile */
+    .testimonial-3 {
+        order: 99;
+    }
+}
