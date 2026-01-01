@@ -25,7 +25,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .grid-container {
@@ -33,6 +34,15 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 20px;
+}
+
+/* Keep the content centered on wide viewports by limiting the container width
+   and centering it with auto margins. This is more reliable than constraining
+   the body element itself. */
+.grid-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .testimonial-container {
@@ -175,7 +185,7 @@ body {
     color: var(--Grey-100);
 }
 
-@media (min-width:601px) {
+@media (min-width:601px) and (orientation: portrait) {
 
     .grid-container {
         display: grid;
@@ -216,5 +226,20 @@ body {
     /* Push testimonial-3 to the end on mobile */
     .testimonial-3 {
         order: 99;
+    }
+}
+
+@media (min-width:900px) and (orientation: landscape) {
+
+    /* .grid-container {
+        align-items: flex-start;
+        gap: clamp(0.4rem, 1vw, 1rem);
+        padding: clamp(0.4rem, 1vw, 1rem);
+        max-width: 500px;
+        width: 100%;
+    } */
+    body {
+        justify-content: center;
+        align-items: center;
     }
 }
